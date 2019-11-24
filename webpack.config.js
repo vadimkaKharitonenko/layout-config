@@ -15,6 +15,9 @@ const config = {
   devServer: {
     port: 3000,
   },
+  optimization: {
+    minimize: false
+  },
   module: {
     rules: [
       {
@@ -74,8 +77,8 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/pages/main/main.pug',
-      filename: 'main.html',
+      template: './src/pages/index/index.pug',
+      filename: 'index.html',
       inject: true
     }),
     new ExtractTextPlugin({
