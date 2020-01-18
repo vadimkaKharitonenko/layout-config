@@ -1,22 +1,24 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const config = {
   entry: {
-    app: './src/app.js',
+    app: './src/entry.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
   },
   devServer: {
     port: 3000,
   },
   optimization: {
-    minimize: false
+    minimize: false,
   },
   module: {
     rules: [
@@ -24,6 +26,11 @@ const config = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: ['babel-loader', 'eslint-loader']
+      },
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       { 
         test: /\.pug$/,
@@ -76,10 +83,16 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new StylelintPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     new HtmlWebpackPlugin({
       template: './src/pages/index/index.pug',
       filename: 'index.html',
-      inject: true
+      inject: true,
+      defer: ['vendors', 'app']
     }),
     new ExtractTextPlugin({
       filename: 'style.css'
