@@ -45,7 +45,7 @@ const config = {
     port: 3000,
   },
   optimization: {
-    minimize: false,
+    minimize: true,
     splitChunks: {
       chunks: 'all',
     },
