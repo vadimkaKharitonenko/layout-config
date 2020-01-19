@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  const welcomeText: string = 'Welcome';
+import $ from 'jquery';
 
-  console.log(welcomeText);
+$(document).ready(function() {
+  console.log('$ is working');
 });
