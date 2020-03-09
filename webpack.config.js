@@ -1,13 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const StylelintPlugin = require('stylelint-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const pages = [];
 
@@ -74,25 +70,8 @@ const config = {
       use: ['pug-loader']
     },
     {
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [
-                autoprefixer({
-                  'browserlist': ['> 1%', 'last 2 versions']
-                })
-              ],
-              sourceMap: true
-            }
-          },
-          'sass-loader'
-        ]
-      })
+      test: /\.css$/i,
+      use: [MiniCssExtractPlugin.loader, 'css-loader'],
     },
     {
       test: /\.(png|svg|jpg|gif)$/,
@@ -119,15 +98,12 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new StylelintPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
     }),
     ... htmlPlugins,
-    new ExtractTextPlugin({
-      filename: 'style.css'
-    }),
+    new MiniCssExtractPlugin(),
   ]
 };
 
