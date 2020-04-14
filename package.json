@@ -1,6 +1,6 @@
 {
   "name": "starter-pack",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "simple starter pack for layout",
   "repository": "https://github.com/vadimkaKharitonenko/layout-config",
   "main": "index.js",
