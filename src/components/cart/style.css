@@ -1,0 +1,10 @@
+.cart {
+  display: grid;
+  grid-row-gap: 32px;
+  padding: 32px;
+}
+
+.cart__products {
+  display: grid;
+  grid-row-gap: 16px;
+}

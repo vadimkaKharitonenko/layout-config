@@ -47,15 +47,12 @@ input[type=number] {
 * {
 	box-sizing: border-box;
 	outline: none;
-	font-smooth: always;
 	font-variant-ligatures: none;
 	text-rendering: optimizeLegibility!important;
-	font-smoothing: antialiased!important;
 	text-shadow: rgba(0, 0, 0, .01) 0 0 0.5px;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-variant-ligatures: none;
 	-webkit-font-smoothing: antialiased!important;
 	font-synthesis: none;
-	-moz-font-feature-settings: 'kern';
 }

@@ -1,0 +1,9 @@
+include ../product/index.pug
+
+mixin cart({products})
+  section.cart
+    .cart__products.js-cart-products
+      each product in products
+        +product({product})
+    .cart__footer
+      span.cart__total.js-cart-total 47300 $

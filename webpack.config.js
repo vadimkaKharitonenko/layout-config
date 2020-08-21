@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -49,21 +48,11 @@ const config = {
   module: {
     rules: [{
       test: /\.m?js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: ['babel-loader', 'eslint-loader']
-    },
-    {
-      test: /\.ts?$/,
-      use: [
-        {
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true
-          }
-        }
+      exclude: [
+        /(node_modules)/,
+        /__tests__/
       ],
-      exclude: /node_modules/,
-      
+      use: ['babel-loader', 'eslint-loader']
     },
     {
       test: /\.pug$/,
@@ -98,10 +87,6 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    }),
     ... htmlPlugins,
     new MiniCssExtractPlugin(),
   ]

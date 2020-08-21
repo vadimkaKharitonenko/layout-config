@@ -7,7 +7,5 @@ function importAllScripts(context) {
 }
 
 importAllScripts(require.context('./components/', true, /^\.\/.*\.js$/));
-importAllScripts(require.context('./components/', true, /^\.\/.*\.ts$/));
-
 importAllScripts(require.context('./pages/', true, /^\.\/.*\.js$/));
-importAllScripts(require.context('./pages/', true, /^\.\/.*\.ts$/));
+importAllScripts(require.context('./helpers/', true, /^\.\/.*\.js$/));

@@ -1,10 +1,31 @@
-html(lang="ru")
+include ../../components/cart/index.pug
+
+html(lang='ru')
   head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Cart
   body
     header
-    main test
+    main 
+      +cart({
+        products: [
+          {
+            id: 0,
+            name: 'Phone',
+            price: 15000,
+          },
+          {
+            id: 1,
+            name: 'TV',
+            price: 32000
+          },
+          {
+            id: 2,
+            name: 'Tea',
+            price: 300
+          }
+        ]
+      })
     footer
