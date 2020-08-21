@@ -1,0 +1,5 @@
+mixin product({product})
+  article.product
+    h2= product.name
+    span= `${product.price} $`
+    button(data-id= product.id).js-product-delete Delete
