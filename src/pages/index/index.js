@@ -1,3 +1,1 @@
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('work');
-});
+import '../../components/vue-app.js';

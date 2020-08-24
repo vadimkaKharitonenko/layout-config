@@ -3,6 +3,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const pages = [];
 
@@ -59,6 +60,10 @@ const config = {
       use: ['pug-loader']
     },
     {
+      test: /\.vue$/,
+      loader: 'vue-loader'
+    },
+    {
       test: /\.css$/i,
       use: [MiniCssExtractPlugin.loader, 'css-loader'],
     },
@@ -86,9 +91,10 @@ const config = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
     ... htmlPlugins,
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
+    new VueLoaderPlugin(),
   ]
 };
 
